@@ -10,6 +10,7 @@
 `sudo docker build -t whisper-api-gpu .`
 
 ### Start the container
+*required*: `nvidia container toolkit` installed on your system
 ```
 sudo docker run -d --gpus all --restart unless-stopped \             
   -p 8888:8888 \
