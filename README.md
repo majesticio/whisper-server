@@ -1,12 +1,8 @@
 
-# Whisper cpp
+# Whisper Server
 ------------
-*this only works with 16-bit WAV files*
->convert a file to 16-bit WAV:
-
-
-`ffmpeg -i input.mp3 -ar 16000 -ac 1 -c:a pcm_s16le output.wav`
-
+Fast inference transcriptions using docker and whisper. Compiled for an RTX 4090
+*this only works with 16-bit WAV files, see below*
 
 ## Setup
 ### Build with Dockerfile
