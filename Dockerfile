@@ -1,9 +1,7 @@
 FROM nvidia/cuda:11.8.0-runtime-ubuntu20.04
 
-# Set non-interactive mode for tzdata
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies and CUDA toolkit for nvcc
 RUN apt-get update && apt-get install -y \
     git \
     build-essential \
@@ -23,13 +21,12 @@ RUN git clone https://github.com/ggerganov/whisper.cpp.git /whisper.cpp
 
 WORKDIR /whisper.cpp
 
-# Download the base.en model
 RUN sh ./models/download-ggml-model.sh base.en
 
 # Build whisper.cpp with CUDA support and specify the architecture (adjust compute_89 for your GPU)
 RUN make clean && CUDA_DOCKER_ARCH=compute_89 GGML_CUDA=1 make -j
 
-RUN pip3 install Flask gunicorn
+RUN pip3 install Flask gunicorn httpx
 
 COPY server.py /whisper.cpp/server.py
 
