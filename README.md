@@ -1,7 +1,8 @@
 
 # Whisper Server
 ------------
-Fast inference transcriptions using docker and whisper. Compiled for an RTX 4090
+>Fast inference via REST API to make audio transcriptions using docker and whisper. Compiled for an RTX 4090
+
 *this only works with 16-bit WAV files, see below*
 
 ## Setup
@@ -26,7 +27,7 @@ sudo docker run -d --gpus all --restart unless-stopped \
 ## Usage
 The transcribe endpoint is accessible via port `8888`
 
-`curl -F 'file=@recordings/audio-new.wav' http://localhost:8888/transcribe`
+`curl -F 'file=@recordings/audio.wav' http://localhost:8888/transcribe`
 
 Example output:
 
